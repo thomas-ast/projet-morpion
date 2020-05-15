@@ -13,14 +13,15 @@ import javafx.scene.layout.VBox;
  * Launches the application
  * @author thomas
  */
-public class Launcher extends Application {
+public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			VBox root = (VBox)FXMLLoader.load(getClass().getResource("views/gui.fxml"));;
 			Scene scene = new Scene(root,1280,720);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("styles/menu.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Jeu du morpion - Menu");
 			primaryStage.setMinWidth(800);
 			primaryStage.setMinHeight(600);
 			primaryStage.show();
