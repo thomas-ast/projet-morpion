@@ -17,14 +17,17 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			VBox root = (VBox)FXMLLoader.load(getClass().getResource("views/gui.fxml"));;
-			Scene scene = new Scene(root,1280,720);
-			scene.getStylesheets().add(getClass().getResource("styles/menu.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Jeu du morpion - Menu");
-			primaryStage.setMinWidth(800);
-			primaryStage.setMinHeight(600);
-			primaryStage.show();
+			
+			// Initializing the scene manager 
+			ScreensManager scenesmanager = ScreensManager.getInstance();
+			scenesmanager.init(primaryStage); // will start with main menu scene
+			
+			// Adding and referencing all the scenes of the app
+			scenesmanager.addScene("mainMenu", FXMLLoader.load(getClass().getResource("views/main_menu.fxml")), getClass().getResource("views/main_menu.css").toExternalForm());
+			scenesmanager.addScene("gameVsAi", FXMLLoader.load(getClass().getResource("views/game.fxml")), getClass().getResource("views/game.css").toExternalForm());
+			
+			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

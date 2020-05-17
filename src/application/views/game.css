@@ -1,0 +1,6 @@
+#backMenu {
+	-fx-background-color: white;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 3px;
+}

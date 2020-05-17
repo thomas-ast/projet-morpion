@@ -1,11 +1,16 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
  
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 public class MenuController {
+	private ScreensManager scenesmanager = ScreensManager.getInstance();
 	
 	/**
 	 * Button to play vs the AI
@@ -31,7 +36,18 @@ public class MenuController {
 	@FXML
 	private Button quit;
 	
+	public MenuController() {
+		
+	}
 	
+	public MenuController(ScreensManager scenesmanager) {
+		this.scenesmanager = scenesmanager;
+	}
+	
+	public void goToGameVsAi(ActionEvent event) {
+		scenesmanager.switchToScene("gameVsAi");
+	}
+
 	/**
 	 * Quit the app
 	 * @param event
@@ -39,6 +55,5 @@ public class MenuController {
 	public void quitApp(ActionEvent event) {
 		System.exit(0);
 	}
-	
-	
+
 }
