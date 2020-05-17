@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class Controller {
+public class MenuController {
 	
 	/**
 	 * Button to play vs the AI
