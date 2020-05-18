@@ -3,8 +3,10 @@ package application;
 import javafx.event.ActionEvent;
  
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class GameController {
@@ -20,55 +22,55 @@ public class GameController {
 	 * The upper left case
 	 */
 	@FXML
-	private Rectangle case_up_left;
+	private Button case_up_left;
 	
 	/**
 	 * The upper mid case
 	 */
 	@FXML
-	private Rectangle case_up_mid;
+	private Button case_up_mid;
 	
 	/**
 	 * The upper right case
 	 */
 	@FXML
-	private Rectangle case_up_right;
+	private Button case_up_right;
 	
 	/**
 	 * The middle left case
 	 */
 	@FXML
-	private Rectangle case_mid_left;
+	private Button case_mid_left;
 	
 	/**
 	 * The middle mid case
 	 */
 	@FXML
-	private Rectangle case_mid_mid;
+	private Button case_mid_mid;
 	
 	/**
 	 * The middle right case
 	 */
 	@FXML
-	private Rectangle case_mid_right;
+	private Button case_mid_right;
 	
 	/**
 	 * The bottom left case
 	 */
 	@FXML
-	private Rectangle case_bot_left;
+	private Button case_bot_left;
 	
 	/**
 	 * The bottom mid case
 	 */
 	@FXML
-	private Rectangle case_bot_mid;
+	private Button case_bot_mid;
 	
 	/**
 	 * The bottom right case
 	 */
 	@FXML
-	private Rectangle case_bot_right;
+	private Button case_bot_right;
 	
 	
 	public void backToMenu(ActionEvent event) {
@@ -76,5 +78,10 @@ public class GameController {
 		screensmanager.setStageTitle("Jeu du morpion - Partie contre l'IA");
 	}
 	
+	public void placeMark(ActionEvent event) {
+		Button r = (Button)event.getSource();
+		r.getStyleClass().add("circle");
+		r.applyCss();
+	}
 	
 }
