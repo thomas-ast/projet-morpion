@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.shape.Rectangle;
 
 public class GameController {
+	private ScreensManager screensmanager = ScreensManager.getInstance();
 	
 	/**
 	 * The game grid
@@ -70,12 +71,9 @@ public class GameController {
 	private Rectangle case_bot_right;
 	
 	
-	/**
-	 * Quit the app
-	 * @param event
-	 */
-	public void quitApp(ActionEvent event) {
-		System.exit(0);
+	public void backToMenu(ActionEvent event) {
+		screensmanager.switchToScene("mainMenu");
+		screensmanager.setStageTitle("Jeu du morpion - Partie contre l'IA");
 	}
 	
 	

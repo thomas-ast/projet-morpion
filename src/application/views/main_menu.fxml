@@ -7,36 +7,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../views/main_menu.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-            <Text layoutX="553.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeu du morpion" textAlignment="CENTER" AnchorPane.bottomAnchor="543.33984375" AnchorPane.leftAnchor="553.0" AnchorPane.rightAnchor="521.41796875" AnchorPane.topAnchor="148.72265625">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Text>
-            <VBox layoutX="570.0" layoutY="327.0" prefHeight="134.0" prefWidth="171.0" AnchorPane.leftAnchor="570.0" AnchorPane.rightAnchor="539.0">
-               <children>
-                  <Button id="playVsAi" fx:id="playVsAi" mnemonicParsing="false" onAction="#goToGameVsAi" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Jouer contre l'IA">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button id="playVsHuman" fx:id="playVsHuman" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Jouer contre l'Homme">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button id="settings" fx:id="settings" layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Paramètres">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button id="quit" fx:id="quit" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" onAction="#quitApp" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Quitter" />
-               </children>
-            </VBox>
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@main_menu.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
+   <children>
+      <Text layoutX="553.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeu du morpion" textAlignment="CENTER" AnchorPane.bottomAnchor="543.33984375" AnchorPane.leftAnchor="553.0" AnchorPane.rightAnchor="521.41796875" AnchorPane.topAnchor="148.72265625">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <VBox layoutX="570.0" layoutY="327.0" prefHeight="134.0" prefWidth="171.0" AnchorPane.leftAnchor="570.0" AnchorPane.rightAnchor="539.0">
+         <children>
+            <Button id="playVsAi" fx:id="playVsAi" mnemonicParsing="false" onAction="#goToGameVsAi" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Jouer contre l'IA">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="playVsHuman" fx:id="playVsHuman" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Jouer contre l'Homme">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="settings" fx:id="settings" layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Paramètres">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="quit" fx:id="quit" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" onAction="#quitApp" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Quitter" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

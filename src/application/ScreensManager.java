@@ -1,19 +1,14 @@
 package application;
 
-import java.io.IOException;
 import java.util.HashMap;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ScreensManager {
-	private static ScreensManager single_scenesmanager = null;
+	private static ScreensManager single_screensmanager = null;
 	
-	private HashMap<String, Pane> scenesMap = new HashMap<>();
-	private Scene persistentScene;
+	private HashMap<String, Scene> scenesMap = new HashMap<>();
 	private Stage persistentStage;
 	
 	private ScreensManager() {
@@ -21,26 +16,16 @@ public class ScreensManager {
 	}
 	
 	public static ScreensManager getInstance() {
-		if(single_scenesmanager == null) {
-			single_scenesmanager = new ScreensManager();
+		if(single_screensmanager == null) {
+			single_screensmanager = new ScreensManager();
 		}
-		return single_scenesmanager;
+		return single_screensmanager;
 	}
 	
-	public void init(Stage stage) {
-		VBox root = null;
-		try {
-			root = (VBox)FXMLLoader.load(getClass().getResource("views/main_menu.fxml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
-		
+	public void init(Stage stage, Scene scene) {
 		this.persistentStage = stage;
 		
-		this.persistentScene = new Scene(root,1280,720);
-		persistentScene.getStylesheets().add(getClass().getResource("views/main_menu.css").toExternalForm());
-		
-		stage.setScene(persistentScene);
+		stage.setScene(scene);
 		stage.setTitle("Jeu du morpion - Menu");
 		
 		stage.setMinWidth(800);
@@ -52,8 +37,9 @@ public class ScreensManager {
 		persistentStage.setTitle(title);
 	}
 	
-	protected void addScene(String name, Pane pane, String css) {
-		scenesMap.put(name, pane);
+	protected void addScene(String name, Scene scene, String css) {
+		scene.getStylesheets().add(css);
+		scenesMap.put(name, scene);
 	}
 	
 	protected void removeScene(String name) {
@@ -61,6 +47,6 @@ public class ScreensManager {
 	}
 	
 	protected void switchToScene(String name) {
-		persistentScene.setRoot(scenesMap.get(name));
+		persistentStage.setScene(scenesMap.get(name));
 	}
 }
