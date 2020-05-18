@@ -26,12 +26,12 @@
             <Button fx:id="case_bot_right" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
          </children>
       </Group>
-      <Text layoutX="507.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Au tour de " textAlignment="CENTER" wrappingWidth="265.58203125">
+      <Text fx:id="turnText" layoutX="507.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Au tour de " textAlignment="CENTER" wrappingWidth="265.58203125">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="507.0" layoutY="665.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vainqueur " textAlignment="CENTER" wrappingWidth="265.58203125">
+      <Text fx:id="winnerText" layoutX="507.0" layoutY="665.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vainqueur " textAlignment="CENTER" wrappingWidth="265.58203125">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
