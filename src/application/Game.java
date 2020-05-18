@@ -25,9 +25,16 @@ public class Game {
 	 */
 	private char current_player;
 	
+	/**
+	 * Array containing the players: Humon or Ai
+	 */
+	private Player[] players = new Player[2];
 	
-	private Player[] players;
-	
+	/**
+	 * Int containing the type of the game:
+	 * - 1 = Human vs Human
+	 * - 2 = Human vs Ai
+	 */
 	private int type;
 	
 	
@@ -90,7 +97,26 @@ public class Game {
 		this.is_over = is_over;
 	}
 	
-	public void setGrid(int x, int y)
+	public void setGrid()
+	{
+		this.grid = new char[3][3];
+		
+		for(int i=0; i<3; i++)
+		{
+			for(int j =0; j<3; j++)
+			{
+				this.grid[i][j]=' ';
+			}
+		}
+		
+	}
+	
+	/**
+	 * Setter for a value in grid[x][y]
+	 * @param x
+	 * @param y
+	 */
+	public void setIntoGrid(int x, int y)
 	{
 		this.grid[x][y]=this.current_player;
 	}
@@ -117,6 +143,10 @@ public class Game {
 		
 	}
 	
+	/**
+	 * Getter for the current player char
+	 * @return {@code char}
+	 */
 	public char getCurrent_player()
 	{
 		return this.current_player;
@@ -158,12 +188,14 @@ public class Game {
 		{
 			for(int j =0; j<3; j++)
 			{
-				if(this.grid[i][j]=='X' || this.grid[i][j]=='O' || full!=true)
+				if(this.grid[i][j]=='X' || this.grid[i][j]=='O')
 				{
+					System.out.println("Hello true");
 					full=true;
 				}
 				else
 				{
+					System.out.println("Hello false");
 					full=false;
 				}
 			}
@@ -172,18 +204,34 @@ public class Game {
 		return full;
 	}
 
+	/**
+	 * Getter for the type of the game
+	 * @return {@code int}
+	 */
 	public int getType() {
 		return type;
 	}
 
+	/**
+	 * Setter for the type of the game
+	 * @param type
+	 */
 	public void setType(int type) {
 		this.type = type;
 	}
 
+	/**
+	 * Getter for the player array
+	 * @return
+	 */
 	public Player[] getPlayers() {
 		return players;
 	}
 
+	/**
+	 * Setter for the player array.
+	 * Depending on the type of the game.
+	 */
 	public void setPlayers() {
 		
 		this.players[0]= new HumanPlayer(this.getCurrent_player());

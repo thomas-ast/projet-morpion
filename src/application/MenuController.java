@@ -55,6 +55,7 @@ public class MenuController {
 			Parent root = (Parent)loader.load();
 			GameController controller = loader.getController();
 			controller.setUpperTitle(gameType);
+			controller.setGame();
 			screensmanager.switchToScene(new Scene(root));
 			screensmanager.setStageTitle("Jeu du morpion - Partie contre l'IA");
 		} catch (IOException e) {
@@ -69,8 +70,9 @@ public class MenuController {
 			Parent root = (Parent)loader.load();
 			GameController controller = loader.getController();
 			controller.setUpperTitle(gameType);
+			controller.setGame();
 			screensmanager.switchToScene(new Scene(root));
-			screensmanager.setStageTitle("Jeu du morpion - Partie contre l'IA");
+			screensmanager.setStageTitle("Jeu du morpion - Partie contre Homme");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

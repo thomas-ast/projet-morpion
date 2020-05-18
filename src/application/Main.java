@@ -25,11 +25,11 @@ public class Main extends Application {
 		
 		Game game = new Game(1);
 		
-		game.setGrid(0, 0);
+		game.setIntoGrid(0, 0);
 		
-		game.setGrid(1, 1);
+		game.setIntoGrid(1, 1);
 		
-		game.setGrid(2, 2);
+		game.setIntoGrid(2, 2);
 		
 		game.checkWin();
 		

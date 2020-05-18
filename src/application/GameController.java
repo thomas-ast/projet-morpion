@@ -96,6 +96,11 @@ public class GameController {
 	@FXML
 	private Text upperTitle;
 	
+	/**
+	 * Instance of a game
+	 */
+	private Game game;
+	
 	
 	/**
 	 * Brings back to the main menu
@@ -118,8 +123,41 @@ public class GameController {
 	 */
 	public void placeMark(ActionEvent event) {
 		Button r = (Button)event.getSource();
-		r.getStyleClass().add("circle");
-		r.applyCss();
+		
+		if(game.getCurrent_player()=='O')
+		{
+			r.getStyleClass().add("circle");
+			r.applyCss();
+		}
+		else
+		{
+			r.getStyleClass().add("cross");
+			r.applyCss();
+		}
+		
+		game.checkWin();
+		
+		if(game.getIs_over()==true)
+		{
+			//winnerText.setText("Vainqueur: " + game.getCurrent_player()+ "!!");
+			//winnerText.setDisable(false);
+		}
+		else
+		{
+			boolean full = game.isFull();
+			
+			System.out.println(full);
+			
+			if(full==true)
+			{
+				//winnerText.setText("Egalité! Dommage");
+				//winnerText.setDisable(false);
+			}
+			else
+			{
+				game.switchPlayer();
+			}
+		}
 	}
 	
 	/**
@@ -130,4 +168,20 @@ public class GameController {
 		upperTitle.setText(title);
 	}
 	
+	public void setGame() {
+		if(upperTitle.getText()=="Partie contre Homme")
+		{
+			game = new Game(1);
+		}
+		else
+		{
+			game = new Game(2);
+		}
+		
+		System.out.println(game.getCurrent_player());
+		
+		//turnText.setText("Au tour de " + game.getCurrent_player());
+		
+		//winnerText.setDisable(true);
+	}
 }
