@@ -190,12 +190,10 @@ public class Game {
 			{
 				if(this.grid[i][j]=='X' || this.grid[i][j]=='O')
 				{
-					System.out.println("Hello true");
 					full=true;
 				}
 				else
 				{
-					System.out.println("Hello false");
 					full=false;
 				}
 			}

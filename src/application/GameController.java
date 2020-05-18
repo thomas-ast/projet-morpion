@@ -121,6 +121,13 @@ public class GameController {
 	public void placeMark(ActionEvent event) {
 		Button r = (Button)event.getSource();
 		
+		System.out.println(r.getId());
+		
+		String[][] button = setArray();
+		
+		int [] index = getIndexes(button, r.getId());
+		
+		//System.out.println(index[0]+" et "+ index[1]);
 		
 		if(game.getCurrent_player()=='O')
 		{
@@ -143,8 +150,6 @@ public class GameController {
 		else
 		{
 			boolean full = game.isFull();
-			
-			System.out.println(full);
 			
 			if(full==true)
 			{
@@ -177,10 +182,45 @@ public class GameController {
 			game = new Game(2);
 		}
 		
-		System.out.println(game.getCurrent_player());
-		
 		turnText.setText("Au tour de " + game.getCurrent_player());
 		
 		winnerText.setVisible(false);
 	}
+	
+	public String[][] setArray() {
+		
+		String[][] button = new String[3][3];
+		
+		for(int i=0; i<3 ; i++)
+		{
+			for(int j=0; j<3; j++)
+			{
+				button[i][j]="case"+i+j;
+			}
+		}
+		
+		return button;
+	}
+	
+	public int[] getIndexes(String[][] button, String name)
+	{
+		int[] index = new int[2];
+		
+		for(int i=0; i<3 ; i++)
+		{
+			for(int j=0; j<3; j++)
+			{
+				if(button[i][j]==name)
+				{
+					index[0]=i;
+					index[1]=j;
+				}
+			}
+		}
+		
+		return index;
+	}
+
 }
+
+	
