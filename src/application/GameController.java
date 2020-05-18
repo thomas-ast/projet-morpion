@@ -124,6 +124,7 @@ public class GameController {
 	public void placeMark(ActionEvent event) {
 		Button r = (Button)event.getSource();
 		
+		
 		if(game.getCurrent_player()=='O')
 		{
 			r.getStyleClass().add("circle");
@@ -139,8 +140,8 @@ public class GameController {
 		
 		if(game.getIs_over()==true)
 		{
-			//winnerText.setText("Vainqueur: " + game.getCurrent_player()+ "!!");
-			//winnerText.setDisable(false);
+			winnerText.setText("Vainqueur: " + game.getCurrent_player()+ "!!");
+			winnerText.setVisible(true);
 		}
 		else
 		{
@@ -150,12 +151,13 @@ public class GameController {
 			
 			if(full==true)
 			{
-				//winnerText.setText("Egalité! Dommage");
-				//winnerText.setDisable(false);
+				winnerText.setText("Egalité! Dommage");
+				winnerText.setVisible(true);
 			}
 			else
 			{
 				game.switchPlayer();
+				turnText.setText("Au tour de " + game.getCurrent_player());
 			}
 		}
 	}
@@ -180,8 +182,8 @@ public class GameController {
 		
 		System.out.println(game.getCurrent_player());
 		
-		//turnText.setText("Au tour de " + game.getCurrent_player());
+		turnText.setText("Au tour de " + game.getCurrent_player());
 		
-		//winnerText.setDisable(true);
+		winnerText.setVisible(false);
 	}
 }
