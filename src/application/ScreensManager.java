@@ -1,14 +1,10 @@
 package application;
 
-import java.util.HashMap;
-
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class ScreensManager {
 	private static ScreensManager single_screensmanager = null;
-	
-	private HashMap<String, Scene> scenesMap = new HashMap<>();
 	private Stage persistentStage;
 	
 	private ScreensManager() {
@@ -33,20 +29,15 @@ public class ScreensManager {
 		stage.show();
 	}
 	
+	public Stage getPersistentStage() {
+		return persistentStage;
+	}
+	
 	protected void setStageTitle(String title) {
 		persistentStage.setTitle(title);
 	}
 	
-	protected void addScene(String name, Scene scene, String css) {
-		scene.getStylesheets().add(css);
-		scenesMap.put(name, scene);
-	}
-	
-	protected void removeScene(String name) {
-		scenesMap.remove(name);
-	}
-	
-	protected void switchToScene(String name) {
-		persistentStage.setScene(scenesMap.get(name));
+	protected void switchToScene(Scene scene) {
+		persistentStage.setScene(scene);
 	}
 }

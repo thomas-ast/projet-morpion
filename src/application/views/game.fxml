@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@game.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
    <children>
-      <Text layoutX="14.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Partie contre l'IA" wrappingWidth="265.58203125" AnchorPane.bottomAnchor="679.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="1000.41796875" AnchorPane.topAnchor="14.0">
+      <Text fx:id="upperTitle" layoutX="14.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Partie contre " wrappingWidth="371.58203125" AnchorPane.bottomAnchor="679.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="895.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

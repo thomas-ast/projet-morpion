@@ -21,20 +21,10 @@ public class App extends Application {
 			// Initializing the scene manager 
 			ScreensManager screensmanager = ScreensManager.getInstance();
 			
-			// Main Menu
+			// Main Menu screen
 			AnchorPane rootMainMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("views/main_menu.fxml"));
-			String cssMainMenu = getClass().getResource("views/main_menu.css").toExternalForm();
-			Scene mainMenu = new Scene(rootMainMenu, 1280, 720);
-			screensmanager.addScene("mainMenu", mainMenu, cssMainMenu);
 			
-			screensmanager.init(primaryStage, mainMenu); // will start with main menu scene
-			
-			// Game vs Ai
-			AnchorPane rootGameVsAi = (AnchorPane)FXMLLoader.load(getClass().getResource("views/game.fxml"));
-			String cssGameVsAi = getClass().getResource("views/game.css").toExternalForm();
-			Scene gameVsAi = new Scene(rootGameVsAi, 1280, 720);
-			screensmanager.addScene("gameVsAi", gameVsAi, cssGameVsAi);
-			
+			screensmanager.init(primaryStage, new Scene(rootMainMenu, 1280, 720)); // will start with main menu scene
 			
 			
 		} catch(Exception e) {

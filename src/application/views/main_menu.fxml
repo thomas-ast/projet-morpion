@@ -21,7 +21,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button id="playVsHuman" fx:id="playVsHuman" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Jouer contre l'Homme">
+            <Button id="playVsHuman" fx:id="playVsHuman" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToGameVsHuman" prefHeight="26.0" prefWidth="171.0" styleClass="menu-btn" text="Jouer contre l'Homme">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
