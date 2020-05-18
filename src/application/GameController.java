@@ -6,13 +6,10 @@ import javafx.event.ActionEvent;
  
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class GameController {
@@ -28,55 +25,55 @@ public class GameController {
 	 * The upper left case
 	 */
 	@FXML
-	private Button case_up_left;
+	private Button case00;
 	
 	/**
 	 * The upper mid case
 	 */
 	@FXML
-	private Button case_up_mid;
+	private Button case01;
 	
 	/**
 	 * The upper right case
 	 */
 	@FXML
-	private Button case_up_right;
+	private Button case02;
 	
 	/**
 	 * The middle left case
 	 */
 	@FXML
-	private Button case_mid_left;
+	private Button case10;
 	
 	/**
 	 * The middle mid case
 	 */
 	@FXML
-	private Button case_mid_mid;
+	private Button case11;
 	
 	/**
 	 * The middle right case
 	 */
 	@FXML
-	private Button case_mid_right;
+	private Button case12;
 	
 	/**
 	 * The bottom left case
 	 */
 	@FXML
-	private Button case_bot_left;
+	private Button case20;
 	
 	/**
 	 * The bottom mid case
 	 */
 	@FXML
-	private Button case_bot_mid;
+	private Button case21;
 	
 	/**
 	 * The bottom right case
 	 */
 	@FXML
-	private Button case_bot_right;
+	private Button case22;
 	
 	/**
 	 * The text above the grid stating which player has to play
@@ -151,7 +148,7 @@ public class GameController {
 			
 			if(full==true)
 			{
-				winnerText.setText("Egalité! Dommage");
+				winnerText.setText("Egalitï¿½! Dommage");
 				winnerText.setVisible(true);
 			}
 			else
