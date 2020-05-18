@@ -21,6 +21,19 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
+		//launch(args);
+		
+		Game game = new Game(1);
+		
+		game.setGrid(0, 0);
+		
+		game.setGrid(1, 1);
+		
+		game.setGrid(2, 2);
+		
+		game.checkWin();
+		
+		if(game.getIs_over()==true)
+			System.out.print(game.getCurrent_player() + " a gagné");
 	}
 }

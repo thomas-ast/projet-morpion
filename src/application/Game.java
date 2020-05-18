@@ -20,17 +20,16 @@ public class Game {
 	private boolean is_over;
 	
 	/**
-	 * Int used to know which types of game it is.
-	 * 1=player vs player
-	 * 2=player vs computer
-	 */
-	private int type;
-	
-	/**
 	 * Char used to know which players turn it is.
 	 * 'X' or 'O'
 	 */
 	private char current_player;
+	
+	
+	private Player[] players;
+	
+	private int type;
+	
 	
 	/**
 	 * Constructor
@@ -38,7 +37,9 @@ public class Game {
 	public Game(int _type) {
 		this.grid= new char[3][3];
 		this.setIs_over(false);
-		this.type=_type;
+		this.setType(_type);
+		this.setCurrent_player();
+		this.setPlayers();
 		
 	}
 	
@@ -89,6 +90,11 @@ public class Game {
 		this.is_over = is_over;
 	}
 	
+	public void setGrid(int x, int y)
+	{
+		this.grid[x][y]=this.current_player;
+	}
+	
 	
 	/**
 	 * Used for the beginning of the game.
@@ -101,10 +107,19 @@ public class Game {
 		int choice = randomNum.nextInt(2);
 		
 		if(choice==0)
+		{
 			current_player='X';
+		}
 		else
+		{
 			current_player='O';
+		}
 		
+	}
+	
+	public char getCurrent_player()
+	{
+		return this.current_player;
 	}
 	
 	/**
@@ -155,6 +170,38 @@ public class Game {
 		}
 		
 		return full;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public Player[] getPlayers() {
+		return players;
+	}
+
+	public void setPlayers() {
+		
+		this.players[0]= new HumanPlayer(this.getCurrent_player());
+				
+		if(this.getType()==1)
+		{
+			if(this.getCurrent_player()=='X')
+				this.players[1]= new HumanPlayer('O');
+			else
+				this.players[1]= new HumanPlayer('X');
+		}
+		else
+		{
+			if(this.getCurrent_player()=='X')
+				this.players[1]= new AiPlayer('O');
+			else
+				this.players[1]= new AiPlayer('X');
+		}
 	}
 }
 
