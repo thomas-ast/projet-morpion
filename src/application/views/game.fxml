@@ -15,15 +15,15 @@
       </Text>
       <Group layoutX="400.0" layoutY="122.0">
          <children>
-            <Button fx:id="case_up_left" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_up_mid" layoutX="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_up_right" layoutX="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_mid_right" layoutX="320.0" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_mid_mid" layoutX="160.0" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_mid_left" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_bot_left" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_bot_mid" layoutX="160.0" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case_bot_right" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case00" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case01" layoutX="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case02" layoutX="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case12" layoutX="320.0" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case11" layoutX="160.0" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case10" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case20" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case21" layoutX="160.0" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case22" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
          </children>
       </Group>
       <Text fx:id="turnText" layoutX="507.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Au tour de " textAlignment="CENTER" wrappingWidth="265.58203125">
