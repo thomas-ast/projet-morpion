@@ -197,7 +197,7 @@ public class GameController {
 			winnerText.setText("Vainqueur: " + game.getCurrentPlayer()+ "!!");
 			winnerText.setVisible(true);
 			disableAllButtons(grid);
-			//gameWon(grid, winningTiles);
+			gameWon(grid, winningTiles);
 			
 			loadGame.setDisable(false);
 			save.setDisable(true);
@@ -306,15 +306,12 @@ public class GameController {
 	}
 	
 	public void gameWon(GridPane gridPane, int[] winningTiles) {
-	    
-		boolean highlighted=false;
 		
 		int i = 0;
 		
-		while(highlighted==false) {
+		while(i!=6) {
 			for (Node node : gridPane.getChildren()) {
-				System.out.println("Hello highlight");
-		        if (GridPane.getColumnIndex(node) == 1 && GridPane.getRowIndex(node) == 2) {
+		        if (GridPane.getColumnIndex(node) == winningTiles[i+1] && GridPane.getRowIndex(node) == winningTiles[i]) {
 		        	node.setStyle("-fx-background-color: #00ff00");
 		        }
 		    }
