@@ -113,17 +113,33 @@ public class GameController {
 	
 	
 	/**
-	 * Brings back to the main menu
+	 * Brings back to the main menu, checks if saved before
 	 * @param event
 	 */
 	public void backToMenu(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/main_menu.fxml"));
-			Parent root = (Parent)loader.load();;
-			screensmanager.switchToScene(new Scene(root));
-			screensmanager.setStageTitle("Jeu du morpion - Menu");
-		} catch (IOException e) {
-			e.printStackTrace();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Quitter la partie");
+		int saved = 0;
+		if(saved == 1) {
+			String s = "Voulez-vous vraiment quitter la partie ?";
+			alert.setContentText(s);
+		}
+		else if(saved != 1) {
+			String s = "Voulez-vous quitter sans sauvegarder ?";
+			alert.setContentText(s);
+		}
+		 
+		Optional<ButtonType> result = alert.showAndWait();
+		 
+		if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("views/main_menu.fxml"));
+				Parent root = (Parent)loader.load();
+				screensmanager.switchToScene(new Scene(root));
+				screensmanager.setStageTitle("Jeu du morpion - Menu");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -279,25 +295,7 @@ public class GameController {
 	}
 	
 	public void save(ActionEvent event) {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		int saved = 0;
-		if(saved == 1) {
-			alert.setTitle("Quitter la partie");
-			String s = "Voulez-vous vraiment quitter la partie ?";
-			alert.setContentText(s);
-		}
-		else if(saved != 1) {
-			alert.setTitle("Quitter la partie");
-			String s = "Voulez-vous quitter sans sauvegarder ?";
-			alert.setContentText(s);
-		}
-		 
-		Optional<ButtonType> result = alert.showAndWait();
-		 
-		if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-			// revenir au menu
-			System.out.println("ok");
-		}
+		
 	}
 	
 	public void playAgain(ActionEvent event) {
