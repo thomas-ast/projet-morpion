@@ -181,13 +181,13 @@ public class GameController {
 		{
 			r.getStyleClass().add("circle");
 			r.applyCss();
-			rotateCase(r);
+			fadeInCase(r);
 		}
 		else
 		{
 			r.getStyleClass().add("cross");
 			r.applyCss();
-			rotateCase(r);
+			fadeInCase(r);
 		}
 		
 		int [] winningTiles=game.checkWin();
@@ -222,7 +222,7 @@ public class GameController {
 		}
 	}
 	
-	/**
+	/**Case
 	 * Sets the upper left title
 	 * @param title
 	 */
@@ -371,16 +371,16 @@ public class GameController {
 	/**
 	 * Animation to fade in the grid
 	 */
-	public void fadeInGrid() {
+	public void fadeInCase(Button button) {
 		// transition d’opacité sur 2 secondes
-		FadeTransition ft = new FadeTransition(Duration.seconds(1), grid);
+		FadeTransition ft = new FadeTransition(Duration.seconds(1), button);
 		ft.setFromValue(0.01);
 		ft.setToValue(1.5);
 		ft.play();
 	}
 	
-	public void rotateCase(Node node) {
-		RotateTransition rt = new RotateTransition(Duration. millis(500), node);
+	public void rotateGrid() {
+		RotateTransition rt = new RotateTransition(Duration. millis(500), grid);
 		rt.setByAngle(360);
 		rt.play();
 	}
