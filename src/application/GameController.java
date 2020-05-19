@@ -116,15 +116,17 @@ public class GameController {
 	
 	/**
 	 * Places a mark where the player clicked
+	 * Check if the game is won and if the grid is full
+	 * If game won, disables all buttons.
 	 * @param event
 	 */
 	public void placeMark(ActionEvent event) {
 		Button r = (Button)event.getSource();
 		
-		String[][] button = setArray();
+		String[][] names = setArray();
 		
-		int [] index = getIndexes(button, r.getId());
-		
+		int [] index = getIndexes(names, r.getId());		
+	
 		game.setIntoGrid(index[0], index[1]);
 		
 		if(game.getCurrent_player()=='O')
@@ -171,6 +173,10 @@ public class GameController {
 		upperTitle.setText(title);
 	}
 	
+	
+	/**
+	 * Set up an instance of a game
+	 */
 	public void setGame() {
 		if(upperTitle.getText()=="Partie contre Homme")
 		{
@@ -186,6 +192,10 @@ public class GameController {
 		winnerText.setVisible(false);
 	}
 	
+	/**
+	 * Set up the string array containing the names of the buttons.
+	 * @return {@code String[][]}
+	 */
 	public String[][] setArray() {
 		
 		String[][] button = new String[3][3];
@@ -201,6 +211,12 @@ public class GameController {
 		return button;
 	}
 	
+	/**
+	 * Function that returns the indexes of the panel clicked
+	 * @param button
+	 * @param name
+	 * @return {@code integer[]}
+	 */
 	public int[] getIndexes(String[][] button, String name)
 	{
 		int[] index = new int[2];
@@ -219,7 +235,10 @@ public class GameController {
 		
 		return index;
 	}
-	
+
+	/**
+	 * Function that disable all buttons.
+	 */
 	public void disableAllButtons()
 	{
 		case00.setDisable(true);
@@ -231,6 +250,20 @@ public class GameController {
 		case20.setDisable(true);
 		case21.setDisable(true);
 		case22.setDisable(true);
+	}
+	
+	public void gameWon(String[][] button)
+	{
+		for(int i=0; i<3 ; i++)
+		{
+			for(int j=0; j<3; j++)
+			{
+				//if()
+				{
+					
+				}
+			}
+		}
 	}
 
 }

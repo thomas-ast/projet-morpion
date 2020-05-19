@@ -52,13 +52,25 @@ public class Game {
 	
 	/**
 	 * Function used to check if one of the player as won.
+	 * And returns the indexes of the winning tiles
+	 * @return {@code integer[]} 
 	 */
-	public void checkWin() {
+	public int[] checkWin() {
+		
+		int[] winningTiles = new int[6];
+		
 		for(int i = 0; i<3; i++)
 		{
 			if(grid[i][0]==current_player && grid[i][1]==current_player && grid[i][2]==current_player)
 			{
 				setIs_over(true);
+				
+				winningTiles[0]=i;
+				winningTiles[1]=0;
+				winningTiles[2]=i;
+				winningTiles[3]=1;
+				winningTiles[4]=i;
+				winningTiles[5]=2;
 			}
 		}
 		
@@ -67,18 +79,41 @@ public class Game {
 			if(grid[0][i]==current_player && grid[1][i]==current_player && grid[2][i]==current_player)
 			{
 				setIs_over(true);
+				
+				winningTiles[0]=0;
+				winningTiles[1]=i;
+				winningTiles[2]=1;
+				winningTiles[3]=i;
+				winningTiles[4]=2;
+				winningTiles[5]=i;
 			}
 		}
 		
 		if(grid[0][0]==current_player && grid[1][1]==current_player && grid[2][2]==current_player)
 		{
 			setIs_over(true);
+			
+			winningTiles[0]=0;
+			winningTiles[1]=0;
+			winningTiles[2]=1;
+			winningTiles[3]=1;
+			winningTiles[4]=2;
+			winningTiles[5]=2;
 		}
 		
 		if(grid[0][2]==current_player && grid[1][1]==current_player && grid[2][0]==current_player)
 		{
 			setIs_over(true);
+			
+			winningTiles[0]=0;
+			winningTiles[1]=2;
+			winningTiles[2]=1;
+			winningTiles[3]=1;
+			winningTiles[4]=2;
+			winningTiles[5]=0;
 		}
+		
+		return winningTiles;
 	}
 
 	/**
