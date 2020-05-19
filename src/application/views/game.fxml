@@ -49,5 +49,7 @@
          </font>
       </Text>
       <Button id="backMenu" fx:id="backToMenu" layoutX="14.0" layoutY="677.0" mnemonicParsing="false" onAction="#backToMenu" text="Retour au menu" />
+      <Button id="backMenu" fx:id="playAgain" layoutX="14.0" layoutY="616.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="32.0" prefWidth="130.0" text="Rejouer" />
+      <Button id="backMenu" fx:id="save" layoutX="14.0" layoutY="578.0" mnemonicParsing="false" onAction="#save" prefHeight="32.0" prefWidth="130.0" text="Sauvegarder" />
    </children>
 </AnchorPane>

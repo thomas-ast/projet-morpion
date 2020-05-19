@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javafx.event.ActionEvent;
  
@@ -10,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -98,6 +100,16 @@ public class GameController {
 	 * Instance of a game
 	 */
 	private Game game;
+	
+	/**
+	 * Button to save the current game
+	 */
+	private Button save;
+	
+	/**
+	 * Button to play again
+	 */
+	private Button playAgain;
 	
 	
 	/**
@@ -263,6 +275,32 @@ public class GameController {
 			
 			i=i+2;
 		}
+		
+	}
+	
+	public void save(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		int saved = 0;
+		if(saved == 1) {
+			alert.setTitle("Quitter la partie");
+			String s = "Voulez-vous vraiment quitter la partie ?";
+			alert.setContentText(s);
+		}
+		else if(saved != 1) {
+			alert.setTitle("Quitter la partie");
+			String s = "Voulez-vous quitter sans sauvegarder ?";
+			alert.setContentText(s);
+		}
+		 
+		Optional<ButtonType> result = alert.showAndWait();
+		 
+		if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+			// revenir au menu
+			System.out.println("ok");
+		}
+	}
+	
+	public void playAgain(ActionEvent event) {
 		
 	}
 
