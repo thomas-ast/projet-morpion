@@ -147,6 +147,11 @@ public class Game implements Serializable {
 		
 	}
 	
+	public char[][] getGrid()
+	{
+		return this.grid;
+	}
+	
 	/**
 	 * Setter for a value in grid[x][y]
 	 * @param x
@@ -161,6 +166,11 @@ public class Game implements Serializable {
 		}
 		else
 			return false;
+	}
+	
+	public char getFromGrid(int x, int y)
+	{
+		return this.grid[x][y];
 	}
 	
 	

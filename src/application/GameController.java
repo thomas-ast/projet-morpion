@@ -333,6 +333,7 @@ public class GameController {
 	         game = (Game) in.readObject();
 	         in.close();
 	         fileIn.close();
+	         Replay(grid);
 	      } catch (IOException i) {
 	         i.printStackTrace();
 	         return;
@@ -341,6 +342,7 @@ public class GameController {
 	         c.printStackTrace();
 	         return;
 	      }
+	      System.out.println("loaded");
 	}
 	
 	public void save(ActionEvent event) { 
@@ -376,7 +378,6 @@ public class GameController {
 	 * Animation to fade in the grid
 	 */
 	public void fadeInCase(Button button) {
-		// transition d’opacité sur 2 secondes
 		FadeTransition ft = new FadeTransition(Duration.seconds(1), button);
 		ft.setFromValue(0.01);
 		ft.setToValue(1.5);
@@ -387,6 +388,32 @@ public class GameController {
 		RotateTransition rt = new RotateTransition(Duration. millis(500), grid);
 		rt.setByAngle(360);
 		rt.play();
+	}
+	
+	public void Replay(GridPane gridPane)
+	{
+		for(int i = 0 ; i<3 ; i++)
+		{
+			for(int j = 0 ; j<3 ; j++)
+			{
+				
+				for (Node node : gridPane.getChildren()) {
+			        if (GridPane.getColumnIndex(node) == i  && GridPane.getRowIndex(node) == j ) 
+			        {
+			        	if(game.getFromGrid(i, j)=='X')
+			        	{
+			        		node.getStyleClass().add("cross");
+							node.applyCss();
+			        	}
+			        	else if(game.getFromGrid(i, j)=='O')
+			        	{
+			        		node.getStyleClass().add("circle");
+							node.applyCss();
+			        	}
+			        }
+				}
+			}
+		}
 	}
 
 }
