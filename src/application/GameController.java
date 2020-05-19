@@ -121,13 +121,11 @@ public class GameController {
 	public void placeMark(ActionEvent event) {
 		Button r = (Button)event.getSource();
 		
-		System.out.println(r.getId());
-		
 		String[][] button = setArray();
 		
 		int [] index = getIndexes(button, r.getId());
 		
-		//System.out.println(index[0]+" et "+ index[1]);
+		game.setIntoGrid(index[0], index[1]);
 		
 		if(game.getCurrent_player()=='O')
 		{
@@ -146,6 +144,7 @@ public class GameController {
 		{
 			winnerText.setText("Vainqueur: " + game.getCurrent_player()+ "!!");
 			winnerText.setVisible(true);
+			disableAllButtons();
 		}
 		else
 		{
@@ -210,7 +209,7 @@ public class GameController {
 		{
 			for(int j=0; j<3; j++)
 			{
-				if(button[i][j]==name)
+				if(button[i][j].equals(name))
 				{
 					index[0]=i;
 					index[1]=j;
@@ -219,6 +218,19 @@ public class GameController {
 		}
 		
 		return index;
+	}
+	
+	public void disableAllButtons()
+	{
+		case00.setDisable(true);
+		case01.setDisable(true);
+		case02.setDisable(true);
+		case10.setDisable(true);
+		case11.setDisable(true);
+		case12.setDisable(true);
+		case20.setDisable(true);
+		case21.setDisable(true);
+		case22.setDisable(true);
 	}
 
 }
