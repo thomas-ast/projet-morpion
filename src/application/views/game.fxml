@@ -27,13 +27,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="case00" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case01" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="1" />
-            <Button fx:id="case02" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="2" />
-            <Button fx:id="case10" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.rowIndex="1" />
+            <Button fx:id="case00" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Button fx:id="case01" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Button fx:id="case02" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <Button fx:id="case10" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="0" GridPane.rowIndex="1" />
             <Button fx:id="case11" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="case12" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="case20" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.rowIndex="2" />
+            <Button fx:id="case20" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="0" GridPane.rowIndex="2" />
             <Button fx:id="case21" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="case22" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
@@ -51,5 +51,6 @@
       <Button id="backMenu" fx:id="backToMenu" layoutX="14.0" layoutY="677.0" mnemonicParsing="false" onAction="#backToMenu" text="Retour au menu" />
       <Button id="backMenu" fx:id="playAgain" layoutX="14.0" layoutY="616.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="32.0" prefWidth="130.0" text="Rejouer" />
       <Button id="backMenu" fx:id="save" layoutX="14.0" layoutY="578.0" mnemonicParsing="false" onAction="#save" prefHeight="32.0" prefWidth="130.0" text="Sauvegarder" />
+      <Button id="backMenu" fx:id="loadGame" layoutX="14.0" layoutY="540.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="32.0" prefWidth="130.0" text="Charger partie" />
    </children>
 </AnchorPane>

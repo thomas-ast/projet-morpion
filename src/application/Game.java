@@ -1,4 +1,5 @@
 package application;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Random;
  * @author Lucas DAMIENS
  *
  */
-public class Game {
+public class Game implements Serializable {
 	
 	/**
 	 * Array representing the tic tac toe game.

@@ -1,6 +1,8 @@
 package application;
 
-public class HumanPlayer extends Player {
+import java.io.Serializable;
+
+public class HumanPlayer extends Player implements Serializable {
 	
 	public HumanPlayer(char _player)
 	{

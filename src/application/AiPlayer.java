@@ -1,6 +1,8 @@
 package application;
 
-public class AiPlayer extends Player{
+import java.io.Serializable;
+
+public class AiPlayer extends Player implements Serializable {
 
 	public AiPlayer(char _player)
 	{

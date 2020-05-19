@@ -1,6 +1,10 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -97,20 +101,32 @@ public class GameController {
 	private Text upperTitle;
 	
 	/**
-	 * Instance of a game
-	 */
-	private Game game;
-	
-	/**
 	 * Button to save the current game
 	 */
+	@FXML
 	private Button save;
 	
 	/**
 	 * Button to play again
 	 */
+	@FXML
 	private Button playAgain;
 	
+	/**
+	 * Button to load a game
+	 */
+	@FXML
+	private Button loadGame;
+	
+	/**
+	 * Instance of a game
+	 */
+	private Game game;
+	
+	/**
+	 * Says if it is saved of not
+	 */
+	private boolean isSaved;
 	
 	/**
 	 * Brings back to the main menu, checks if saved before
@@ -177,6 +193,9 @@ public class GameController {
 			winnerText.setVisible(true);
 			disableAllButtons(grid);
 			gameWon(grid, winningTiles);
+			
+			loadGame.setDisable(false);
+			save.setDisable(true);
 		}
 		else
 		{
@@ -186,6 +205,8 @@ public class GameController {
 			{
 				winnerText.setText("Egalite! Dommage");
 				winnerText.setVisible(true);
+				loadGame.setDisable(false);
+				save.setDisable(true);
 			}
 			else
 			{
@@ -193,6 +214,7 @@ public class GameController {
 				turnText.setText("Au tour de " + game.getCurrent_player());
 			}
 		}
+		save.setDisable(false);
 	}
 	
 	/**
@@ -220,6 +242,8 @@ public class GameController {
 		turnText.setText("Au tour de " + game.getCurrent_player());
 		
 		winnerText.setVisible(false);
+		
+		save.setDisable(true);
 	}
 	
 	/**
@@ -294,12 +318,47 @@ public class GameController {
 		
 	}
 	
-	public void save(ActionEvent event) {
-		
+	public void loadGame(ActionEvent event) {
+		Game game = null;
+	      try {
+	         FileInputStream fileIn = new FileInputStream("src/application/saves/partie.ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         game = (Game) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      } catch (IOException i) {
+	         i.printStackTrace();
+	         return;
+	      } catch (ClassNotFoundException c) {
+	         System.out.println("Game class not found");
+	         c.printStackTrace();
+	         return;
+	      }
+	}
+	
+	public void save(ActionEvent event) { 
+		try {
+	         FileOutputStream fileOut = new FileOutputStream("src/application/saves/partie.ser", false);
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	         out.writeObject(game);
+	         out.close();
+	         fileOut.close();
+	         System.out.printf("Serialized");
+	      } catch (IOException i) {
+	         i.printStackTrace();
+	      }
 	}
 	
 	public void playAgain(ActionEvent event) {
-		
+		game = null;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/game.fxml"));
+			Parent root = (Parent)loader.load();
+			screensmanager.switchToScene(new Scene(root));
+			screensmanager.setStageTitle("Jeu du morpion - Menu");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
