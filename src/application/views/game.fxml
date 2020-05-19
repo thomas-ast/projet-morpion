@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -13,19 +15,29 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Group layoutX="400.0" layoutY="122.0">
+      <GridPane fx:id="grid" layoutX="400.0" layoutY="121.0" minHeight="480.0" minWidth="480.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
             <Button fx:id="case00" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case01" layoutX="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case02" layoutX="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case12" layoutX="320.0" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case11" layoutX="160.0" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case10" layoutY="160.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case20" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case21" layoutX="160.0" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
-            <Button fx:id="case22" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" />
+            <Button fx:id="case01" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="1" />
+            <Button fx:id="case02" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="2" />
+            <Button fx:id="case10" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.rowIndex="1" />
+            <Button fx:id="case11" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="case12" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="case20" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.rowIndex="2" />
+            <Button fx:id="case21" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="case22" mnemonicParsing="false" onAction="#placeMark" prefHeight="160.0" prefWidth="160.0" styleClass="case" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
-      </Group>
+      </GridPane>
       <Text fx:id="turnText" layoutX="507.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Au tour de " textAlignment="CENTER" wrappingWidth="265.58203125">
          <font>
             <Font name="System Bold" size="24.0" />

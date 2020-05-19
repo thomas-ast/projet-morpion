@@ -6,10 +6,10 @@ import javafx.event.ActionEvent;
  
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 public class GameController {
@@ -19,7 +19,7 @@ public class GameController {
 	 * The game grid
 	 */
 	@FXML
-	private Group grid;
+	private GridPane grid;
 	
 	/**
 	 * The upper left case
