@@ -73,6 +73,7 @@ public class MenuController {
 			controller.setGame();
 			screensmanager.switchToScene(new Scene(root));
 			screensmanager.setStageTitle("Jeu du morpion - Partie contre Homme");
+			controller.fadeInGrid();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

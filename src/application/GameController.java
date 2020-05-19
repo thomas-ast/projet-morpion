@@ -7,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Optional;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
  
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class GameController {
 	private ScreensManager screensmanager = ScreensManager.getInstance();
@@ -178,11 +181,13 @@ public class GameController {
 		{
 			r.getStyleClass().add("circle");
 			r.applyCss();
+			rotateCase(r);
 		}
 		else
 		{
 			r.getStyleClass().add("cross");
 			r.applyCss();
+			rotateCase(r);
 		}
 		
 		int [] winningTiles=game.checkWin();
@@ -212,9 +217,9 @@ public class GameController {
 			{
 				game.switchPlayer();
 				turnText.setText("Au tour de " + game.getCurrentPlayer());
+				save.setDisable(false);
 			}
 		}
-		save.setDisable(false);
 	}
 	
 	/**
@@ -348,6 +353,7 @@ public class GameController {
 	      } catch (IOException i) {
 	         i.printStackTrace();
 	      }
+		
 	}
 	
 	public void playAgain(ActionEvent event) {
@@ -363,6 +369,23 @@ public class GameController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Animation to fade in the grid
+	 */
+	public void fadeInGrid() {
+		// transition d’opacité sur 2 secondes
+		FadeTransition ft = new FadeTransition(Duration.seconds(1), grid);
+		ft.setFromValue(0.01);
+		ft.setToValue(1.5);
+		ft.play();
+	}
+	
+	public void rotateCase(Node node) {
+		RotateTransition rt = new RotateTransition(Duration. millis(500), node);
+		rt.setByAngle(360);
+		rt.play();
 	}
 
 }
