@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
  
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -140,13 +141,14 @@ public class GameController {
 			r.applyCss();
 		}
 		
-		game.checkWin();
+		int [] winningTiles=game.checkWin();
 		
 		if(game.getIs_over()==true)
 		{
 			winnerText.setText("Vainqueur: " + game.getCurrent_player()+ "!!");
 			winnerText.setVisible(true);
-			disableAllButtons();
+			disableAllButtons(grid);
+			gameWon(grid, winningTiles);
 		}
 		else
 		{
@@ -239,31 +241,29 @@ public class GameController {
 	/**
 	 * Function that disable all buttons.
 	 */
-	public void disableAllButtons()
-	{
-		case00.setDisable(true);
-		case01.setDisable(true);
-		case02.setDisable(true);
-		case10.setDisable(true);
-		case11.setDisable(true);
-		case12.setDisable(true);
-		case20.setDisable(true);
-		case21.setDisable(true);
-		case22.setDisable(true);
+	private void disableAllButtons(GridPane gridPane) {
+	    for (Node node : gridPane.getChildren()) 
+	    {
+	    	node.setDisable(true); 
+	    }
 	}
 	
-	public void gameWon(String[][] button)
-	{
-		for(int i=0; i<3 ; i++)
-		{
-			for(int j=0; j<3; j++)
-			{
-				//if()
-				{
-					
-				}
-			}
+	public void gameWon(GridPane gridPane, int[] winningTiles) {
+	    
+		boolean highlighted=false;
+		
+		int i = 0;
+		
+		while(highlighted==false) {
+			for (Node node : gridPane.getChildren()) {
+		        if (GridPane.getColumnIndex(node) == 1 && GridPane.getRowIndex(node) == 2) {
+		        	node.setStyle("-fx-background-color: #00ff00");
+		        }
+		    }
+			
+			i=i+2;
 		}
+		
 	}
 
 }
