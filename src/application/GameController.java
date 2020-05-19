@@ -355,8 +355,11 @@ public class GameController {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/game.fxml"));
 			Parent root = (Parent)loader.load();
+			GameController controller = loader.getController();
+			controller.setUpperTitle(upperTitle.getText());
+			controller.setGame();
 			screensmanager.switchToScene(new Scene(root));
-			screensmanager.setStageTitle("Jeu du morpion - Menu");
+			screensmanager.setStageTitle(screensmanager.getPersistentStage().getTitle());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
