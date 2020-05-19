@@ -152,9 +152,15 @@ public class Game implements Serializable {
 	 * @param x
 	 * @param y
 	 */
-	public void setIntoGrid(int x, int y)
+	public boolean setIntoGrid(int x, int y)
 	{
-		this.grid[x][y]=this.current_player;
+		if(this.grid[x][y]!='X' && this.grid[x][y]!='O')
+		{
+			this.grid[x][y]=this.current_player;
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	

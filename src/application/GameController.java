@@ -175,51 +175,55 @@ public class GameController {
 		
 		int [] index = getIndexes(names, r.getId());		
 	
-		game.setIntoGrid(index[0], index[1]);
-		
-		if(game.getCurrentPlayer()=='O')
+		if(game.setIntoGrid(index[0], index[1])==true)
 		{
-			r.getStyleClass().add("circle");
-			r.applyCss();
-			fadeInCase(r);
-		}
-		else
-		{
-			r.getStyleClass().add("cross");
-			r.applyCss();
-			fadeInCase(r);
-		}
-		
-		int [] winningTiles=game.checkWin();
-		
-		if(game.getIs_over()==true)
-		{;
-			winnerText.setText("Vainqueur: " + game.getCurrentPlayer()+ "!!");
-			winnerText.setVisible(true);
-			disableAllButtons(grid);
-			gameWon(grid, winningTiles);
-			
-			loadGame.setDisable(false);
-			save.setDisable(true);
-		}
-		else
-		{
-			boolean full = game.isFull();
-			
-			if(full==true)
+			if(game.getCurrentPlayer()=='O')
 			{
-				winnerText.setText("Egalite! Dommage");
+				r.getStyleClass().add("circle");
+				r.applyCss();
+				fadeInCase(r);
+			}
+			else
+			{
+				r.getStyleClass().add("cross");
+				r.applyCss();
+				fadeInCase(r);
+			}
+			
+			int [] winningTiles=game.checkWin();
+			
+			if(game.getIs_over()==true)
+			{;
+				winnerText.setText("Vainqueur: " + game.getCurrentPlayer()+ "!!");
 				winnerText.setVisible(true);
+				disableAllButtons(grid);
+				gameWon(grid, winningTiles);
+				
 				loadGame.setDisable(false);
 				save.setDisable(true);
 			}
 			else
 			{
-				game.switchPlayer();
-				turnText.setText("Au tour de " + game.getCurrentPlayer());
-				save.setDisable(false);
+				boolean full = game.isFull();
+				
+				if(full==true)
+				{
+					winnerText.setText("Egalite! Dommage");
+					winnerText.setVisible(true);
+					loadGame.setDisable(false);
+					save.setDisable(true);
+				}
+				else
+				{
+					game.switchPlayer();
+					turnText.setText("Au tour de " + game.getCurrentPlayer());
+					save.setDisable(false);
+				}
 			}
 		}
+		else
+			System.out.println("Pas là");
+		
 	}
 	
 	/**Case
