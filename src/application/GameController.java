@@ -152,7 +152,7 @@ public class GameController {
 			
 			if(full==true)
 			{
-				winnerText.setText("Egalit�! Dommage");
+				winnerText.setText("Egalite! Dommage");
 				winnerText.setVisible(true);
 			}
 			else
