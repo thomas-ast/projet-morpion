@@ -222,7 +222,7 @@ public class GameController {
 			}
 		}
 		else
-			System.out.println("Pas là");
+			System.out.println("Pas lï¿½");
 		
 	}
 	
@@ -326,14 +326,13 @@ public class GameController {
 	}
 	
 	public void loadGame(ActionEvent event) {
-		Game game = null;
+		Game loadedGame = null;
 	      try {
 	         FileInputStream fileIn = new FileInputStream("src/application/saves/partie.ser");
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
-	         game = (Game) in.readObject();
+	         loadedGame = (Game) in.readObject();
 	         in.close();
 	         fileIn.close();
-	         Replay(grid);
 	      } catch (IOException i) {
 	         i.printStackTrace();
 	         return;
@@ -342,7 +341,14 @@ public class GameController {
 	         c.printStackTrace();
 	         return;
 	      }
+	      game = loadedGame;
+	      Replay(grid);
 	      System.out.println("loaded");
+	      for(int i = 0; i < 3; i++) {
+	    	  for(int j = 0; j <3; j++) {
+	    		  System.out.println("Case " + i + ", " + j + game.getFromGrid(i, j));
+	    	  }
+	      }
 	}
 	
 	public void save(ActionEvent event) { 
@@ -396,16 +402,16 @@ public class GameController {
 		{
 			for(int j = 0 ; j<3 ; j++)
 			{
-				
 				for (Node node : gridPane.getChildren()) {
 			        if (GridPane.getColumnIndex(node) == i  && GridPane.getRowIndex(node) == j ) 
 			        {
-			        	if(game.getFromGrid(i, j)=='X')
+			        	if(game.getFromGrid(j, i)=='X')
 			        	{
+			        		System.out.println("yooo");
 			        		node.getStyleClass().add("cross");
 							node.applyCss();
 			        	}
-			        	else if(game.getFromGrid(i, j)=='O')
+			        	else if(game.getFromGrid(j, i)=='O')
 			        	{
 			        		node.getStyleClass().add("circle");
 							node.applyCss();
@@ -414,6 +420,7 @@ public class GameController {
 				}
 			}
 		}
+		turnText.setText("Au tour de " + game.getCurrentPlayer());
 	}
 
 }
