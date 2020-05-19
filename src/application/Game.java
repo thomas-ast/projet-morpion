@@ -46,7 +46,7 @@ public class Game implements Serializable {
 		this.grid= new char[3][3];
 		this.setIs_over(false);
 		this.setType(_type);
-		this.setCurrent_player();
+		this.setCurrentPlayer();
 		this.setPlayers();
 		
 	}
@@ -163,7 +163,7 @@ public class Game implements Serializable {
 	 * Random number choosing which player 
 	 * will play first.
 	 */
-	public void setCurrent_player()
+	public void setCurrentPlayer()
 	{
 		Random randomNum = new Random();
 		int choice = randomNum.nextInt(2);
@@ -183,7 +183,7 @@ public class Game implements Serializable {
 	 * Getter for the current player char
 	 * @return {@code char}
 	 */
-	public char getCurrent_player()
+	public char getCurrentPlayer()
 	{
 		return this.current_player;
 	}
@@ -218,13 +218,13 @@ public class Game implements Serializable {
 	 * @return {@code boolean}
 	 */
 	public boolean isFull() {
-		boolean full=false;
+		boolean full=true;
 		
 		for(int i=0; i<3; i++)
 		{
 			for(int j =0; j<3; j++)
 			{
-				if(this.grid[i][j]=='X' || this.grid[i][j]=='O')
+				if(this.grid[i][j]=='X' && full==true || this.grid[i][j]=='O' && full==true)
 				{
 					full=true;
 				}
@@ -268,18 +268,18 @@ public class Game implements Serializable {
 	 */
 	public void setPlayers() {
 		
-		this.players[0]= new HumanPlayer(this.getCurrent_player());
+		this.players[0]= new HumanPlayer(this.getCurrentPlayer());
 				
 		if(this.getType()==1)
 		{
-			if(this.getCurrent_player()=='X')
+			if(this.getCurrentPlayer()=='X')
 				this.players[1]= new HumanPlayer('O');
 			else
 				this.players[1]= new HumanPlayer('X');
 		}
 		else
 		{
-			if(this.getCurrent_player()=='X')
+			if(this.getCurrentPlayer()=='X')
 				this.players[1]= new AiPlayer('O');
 			else
 				this.players[1]= new AiPlayer('X');

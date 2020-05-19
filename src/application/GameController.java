@@ -174,7 +174,7 @@ public class GameController {
 	
 		game.setIntoGrid(index[0], index[1]);
 		
-		if(game.getCurrent_player()=='O')
+		if(game.getCurrentPlayer()=='O')
 		{
 			r.getStyleClass().add("circle");
 			r.applyCss();
@@ -188,11 +188,11 @@ public class GameController {
 		int [] winningTiles=game.checkWin();
 		
 		if(game.getIs_over()==true)
-		{
-			winnerText.setText("Vainqueur: " + game.getCurrent_player()+ "!!");
+		{;
+			winnerText.setText("Vainqueur: " + game.getCurrentPlayer()+ "!!");
 			winnerText.setVisible(true);
 			disableAllButtons(grid);
-			gameWon(grid, winningTiles);
+			//gameWon(grid, winningTiles);
 			
 			loadGame.setDisable(false);
 			save.setDisable(true);
@@ -211,7 +211,7 @@ public class GameController {
 			else
 			{
 				game.switchPlayer();
-				turnText.setText("Au tour de " + game.getCurrent_player());
+				turnText.setText("Au tour de " + game.getCurrentPlayer());
 			}
 		}
 		save.setDisable(false);
@@ -239,7 +239,7 @@ public class GameController {
 			game = new Game(2);
 		}
 		
-		turnText.setText("Au tour de " + game.getCurrent_player());
+		turnText.setText("Au tour de " + game.getCurrentPlayer());
 		
 		winnerText.setVisible(false);
 		
@@ -308,6 +308,7 @@ public class GameController {
 		
 		while(highlighted==false) {
 			for (Node node : gridPane.getChildren()) {
+				System.out.println("Hello highlight");
 		        if (GridPane.getColumnIndex(node) == 1 && GridPane.getRowIndex(node) == 2) {
 		        	node.setStyle("-fx-background-color: #00ff00");
 		        }
