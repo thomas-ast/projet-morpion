@@ -8,8 +8,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Optional;
 
-import javax.swing.JFileChooser;
-
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
@@ -305,6 +303,7 @@ public class GameController {
 
 	/**
 	 * Function that disable all buttons.
+	 * @param gridPane
 	 */
 	private void disableAllButtons(GridPane gridPane) {
 	    for (Node node : gridPane.getChildren()) 
@@ -313,6 +312,11 @@ public class GameController {
 	    }
 	}
 	
+	/**
+	 * Highlights the winning cases
+	 * @param gridPane
+	 * @param winningTiles
+	 */
 	public void gameWon(GridPane gridPane, int[] winningTiles) {
 		
 		int i = 0;
@@ -329,6 +333,10 @@ public class GameController {
 		
 	}
 	
+	/**
+	 * Load a game
+	 * @param event
+	 */
 	public void loadGame(ActionEvent event) {
 		Game loadedGame = null;
 	    try {
@@ -360,6 +368,10 @@ public class GameController {
 	    }
 	}
 	
+	/**
+	 * Save a game, replays the moves
+	 * @param event
+	 */
 	public void save(ActionEvent event) { 
 		try {
 			FileChooser fc = new FileChooser();
@@ -408,12 +420,19 @@ public class GameController {
 		ft.play();
 	}
 	
+	/**
+	 * Animation to rotate the grid
+	 */
 	public void rotateGrid() {
 		RotateTransition rt = new RotateTransition(Duration. millis(500), grid);
 		rt.setByAngle(360);
 		rt.play();
 	}
 	
+	/**
+	 * Replays all the moves from the loaded game
+	 * @param gridPane
+	 */
 	public void Replay(GridPane gridPane)
 	{
 		for(int i = 0 ; i<3 ; i++)
