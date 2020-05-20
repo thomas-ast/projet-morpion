@@ -5,8 +5,6 @@ import java.util.Random;
 /**
  * This class represent the game.
  * 
- * @author Lucas DAMIENS
- *
  */
 public class Game implements Serializable {
 	

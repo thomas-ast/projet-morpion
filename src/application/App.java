@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 
 /**
  * Launches the application
- * @author thomas
+ * 
  */
 public class App extends Application {
 	@Override
@@ -20,7 +20,7 @@ public class App extends Application {
 			ScreensManager screensmanager = ScreensManager.getInstance();
 			
 			// Main Menu screen
-			AnchorPane rootMainMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("views/main_menu.fxml"));
+			AnchorPane rootMainMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("models/main_menu.fxml"));
 			
 			screensmanager.init(primaryStage, new Scene(rootMainMenu, 1280, 720)); // will start with main menu scene
 			

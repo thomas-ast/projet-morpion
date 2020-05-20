@@ -1,4 +1,4 @@
-package application;
+package application.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Optional;
 
+import application.AiPlayer;
+import application.Game;
+import application.Player;
+import application.ScreensManager;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
@@ -26,9 +30,6 @@ import javafx.util.Duration;
 
 /**
  * Controller for the game view
- * 
- * @author Thomas ASTRAND
- * @author Lucas DAMIENS
  *
  */
 public class GameController {
@@ -160,7 +161,7 @@ public class GameController {
 		 
 		if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("views/main_menu.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../models/main_menu.fxml"));
 				Parent root = (Parent)loader.load();
 				screensmanager.switchToScene(new Scene(root));
 				screensmanager.setStageTitle("Jeu du morpion - Menu");
@@ -436,7 +437,7 @@ public class GameController {
 	public void playAgain(ActionEvent event) {
 		game = null;
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/game.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../models/game.fxml"));
 			Parent root = (Parent)loader.load();
 			GameController controller = loader.getController();
 			controller.setUpperTitle(upperTitle.getText());

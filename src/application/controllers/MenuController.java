@@ -1,9 +1,10 @@
-package application;
+package application.controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.ScreensManager;
 import javafx.event.ActionEvent;
  
 import javafx.fxml.FXML;
@@ -15,8 +16,6 @@ import javafx.scene.control.*;
 
 /**
  * Controller for the menu view
- * 
- * @author Thomas ASTRAND
  *
  */
 public class MenuController {
@@ -50,14 +49,22 @@ public class MenuController {
 		
 	}
 	
+	/**
+	 * Create a menu controller instance
+	 * @param scenesmanager
+	 */
 	public MenuController(ScreensManager scenesmanager) {
 		this.screensmanager = scenesmanager;
 	}
 	
+	/**
+	 * Action for switching scene to the game vs Ai
+	 * @param event
+	 */
 	public void goToGameVsAi(ActionEvent event) {
 		String gameType = "Partie contre IA";
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/game.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../models/game.fxml"));
 			Parent root = (Parent)loader.load();
 			GameController controller = loader.getController();
 			controller.setUpperTitle(gameType);
@@ -69,10 +76,14 @@ public class MenuController {
 		}
 	}
 	
+	/**
+	 * Action for switching scene to the game vs Human
+	 * @param event
+	 */
 	public void goToGameVsHuman(ActionEvent event) {
 		String gameType = "Partie contre Homme";
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/game.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../models/game.fxml"));
 			Parent root = (Parent)loader.load();
 			GameController controller = loader.getController();
 			controller.setUpperTitle(gameType);
