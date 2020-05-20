@@ -140,12 +140,11 @@ public class GameController {
 	public void backToMenu(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Quitter la partie");
-		int saved = 0;
-		if(saved == 1) {
+		if(isSaved == true) {
 			String s = "Voulez-vous vraiment quitter la partie ?";
 			alert.setContentText(s);
 		}
-		else if(saved != 1) {
+		else if(isSaved == false) {
 			String s = "Voulez-vous quitter sans sauvegarder ?";
 			alert.setContentText(s);
 		}
@@ -356,6 +355,7 @@ public class GameController {
 		        
 		        game = loadedGame;
 			    Replay(grid);
+			    isSaved = false;
 	        }
 
 	    } catch (IOException i) {
@@ -389,6 +389,7 @@ public class GameController {
 				out.writeObject(game);
 				out.close();
 				fileOut.close();
+				isSaved = true;
 	        }
 	      } catch (IOException i) {
 	         i.printStackTrace();
