@@ -24,6 +24,13 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+/**
+ * Controller for the game view
+ * 
+ * @author Thomas ASTRAND
+ * @author Lucas DAMIENS
+ *
+ */
 public class GameController {
 	private ScreensManager screensmanager = ScreensManager.getInstance();
 	
@@ -174,7 +181,12 @@ public class GameController {
 		
 		String[][] names = setArray();
 		
-		int [] index = getIndexes(names, r.getId());		
+		int [] index = getIndexes(names, r.getId());
+		
+		if(game.getType()==2)
+		{
+			
+		}
 	
 		if(game.setIntoGrid(index[0], index[1])==true)
 		{
@@ -216,15 +228,36 @@ public class GameController {
 				}
 				else
 				{
+					
 					game.switchPlayer();
 					turnText.setText("Au tour de " + game.getCurrentPlayer());
 					save.setDisable(false);
+					
+					if(game.getType()==2)
+					{
+						aiTurn(grid);
+						
+						winningTiles=game.checkWin();
+						
+						if(game.getIs_over()==true)
+						{;
+							winnerText.setText("Vainqueur: " + game.getCurrentPlayer()+ "!!");
+							winnerText.setVisible(true);
+							disableAllButtons(grid);
+							gameWon(grid, winningTiles);
+							
+							loadGame.setDisable(false);
+							save.setDisable(true);
+						}
+						else
+						{
+							game.switchPlayer();
+							turnText.setText("Au tour de " + game.getCurrentPlayer());
+						}
+					}
 				}
 			}
 		}
-		else
-			System.out.println("Pas l�");
-		
 	}
 	
 	/**Case
@@ -396,6 +429,10 @@ public class GameController {
 	      }
 	}
 	
+	/**
+	 * Function that reset the grid for another round
+	 * @param event
+	 */
 	public void playAgain(ActionEvent event) {
 		game = null;
 		try {
@@ -458,6 +495,35 @@ public class GameController {
 			}
 		}
 		turnText.setText("Au tour de " + game.getCurrentPlayer());
+	}
+	
+	/**
+	 * Function for the turn of the AiPlayer
+	 * @param gridPane
+	 */
+	public void aiTurn(GridPane gridPane)
+	{
+		Player[] players=game.getPlayers();
+		
+		AiPlayer ai = (AiPlayer) players[1];
+		int [] index=ai.Play(game);
+		
+		
+		for (Node node : gridPane.getChildren()) {
+	        if (GridPane.getColumnIndex(node) == index[1]  && GridPane.getRowIndex(node) == index[0] ) 
+	        {
+	        	if(game.getFromGrid(index[0], index[1])=='X')
+	        	{
+	        		node.getStyleClass().add("cross");
+					node.applyCss();
+	        	}
+	        	else if(game.getFromGrid(index[0], index[1])=='O')
+	        	{
+	        		node.getStyleClass().add("circle");
+					node.applyCss();
+	        	}
+	        }
+		}
 	}
 
 }

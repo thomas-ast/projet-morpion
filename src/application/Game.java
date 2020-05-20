@@ -133,6 +133,9 @@ public class Game implements Serializable {
 		this.is_over = is_over;
 	}
 	
+	/**
+	 * Set all cases from the grid to the space char
+	 */
 	public void setGrid()
 	{
 		this.grid = new char[3][3];
@@ -147,6 +150,10 @@ public class Game implements Serializable {
 		
 	}
 	
+	/**
+	 * Return the games grid
+	 * @return {@code char[][]}
+	 */
 	public char[][] getGrid()
 	{
 		return this.grid;
@@ -168,6 +175,12 @@ public class Game implements Serializable {
 			return false;
 	}
 	
+	/**
+	 * Return the char contained in the case x,y
+	 * @param x
+	 * @param y
+	 * @return{@code char}
+	 */
 	public char getFromGrid(int x, int y)
 	{
 		return this.grid[x][y];
@@ -277,6 +290,7 @@ public class Game implements Serializable {
 	public Player[] getPlayers() {
 		return players;
 	}
+	
 
 	/**
 	 * Setter for the player array.

@@ -3,6 +3,12 @@ package application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Manager for the different views
+ * 
+ * @author Thomas ASTRAND
+ *
+ */
 public class ScreensManager {
 	private static ScreensManager single_screensmanager = null;
 	private Stage persistentStage;

@@ -13,6 +13,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
+/**
+ * Controller for the menu view
+ * 
+ * @author Thomas ASTRAND
+ *
+ */
 public class MenuController {
 	private ScreensManager screensmanager = ScreensManager.getInstance();
 	
