@@ -183,11 +183,6 @@ public class GameController {
 		String[][] names = setArray();
 		
 		int [] index = getIndexes(names, r.getId());
-		
-		if(game.getType()==2)
-		{
-			
-		}
 	
 		if(game.setIntoGrid(index[0], index[1])==true)
 		{
@@ -241,7 +236,7 @@ public class GameController {
 						winningTiles=game.checkWin();
 						
 						if(game.getIs_over()==true)
-						{;
+						{
 							winnerText.setText("Vainqueur: " + game.getCurrentPlayer()+ "!!");
 							winnerText.setVisible(true);
 							disableAllButtons(grid);
