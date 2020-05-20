@@ -1,11 +1,14 @@
 package application;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Optional;
+
+import javax.swing.JFileChooser;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
@@ -20,6 +23,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 public class GameController {
@@ -327,42 +331,56 @@ public class GameController {
 	
 	public void loadGame(ActionEvent event) {
 		Game loadedGame = null;
-	      try {
-	         FileInputStream fileIn = new FileInputStream("src/application/saves/partie.ser");
-	         ObjectInputStream in = new ObjectInputStream(fileIn);
-	         loadedGame = (Game) in.readObject();
-	         in.close();
-	         fileIn.close();
-	      } catch (IOException i) {
-	         i.printStackTrace();
-	         return;
-	      } catch (ClassNotFoundException c) {
-	         System.out.println("Game class not found");
-	         c.printStackTrace();
-	         return;
-	      }
-	      game = loadedGame;
-	      Replay(grid);
-	      System.out.println("loaded");
-	      for(int i = 0; i < 3; i++) {
-	    	  for(int j = 0; j <3; j++) {
-	    		  System.out.println("Case " + i + ", " + j + game.getFromGrid(i, j));
-	    	  }
-	      }
+	    try {
+	    	FileChooser fc = new FileChooser();
+	        fc.setInitialDirectory(new File(System.getProperty("user.dir")));
+	        FileChooser.ExtensionFilter fef = new FileChooser.ExtensionFilter("Partie de morpion", "*.ser");
+	        fc.getExtensionFilters().add(fef);
+	        fc.setSelectedExtensionFilter(fef);
+	        File selectedFile = fc.showOpenDialog(screensmanager.getPersistentStage());
+	        
+	        if(selectedFile != null) {
+	        	FileInputStream fileIn = new FileInputStream(selectedFile);
+		        ObjectInputStream in = new ObjectInputStream(fileIn);
+		        loadedGame = (Game) in.readObject();
+		        in.close();
+		        fileIn.close();
+		        
+		        game = loadedGame;
+			    Replay(grid);
+	        }
+
+	    } catch (IOException i) {
+	        i.printStackTrace();
+	        return;
+	    } catch (ClassNotFoundException c) {
+	        System.out.println("Game class not found");
+	        c.printStackTrace();
+	        return;
+	    }
 	}
 	
 	public void save(ActionEvent event) { 
 		try {
-	         FileOutputStream fileOut = new FileOutputStream("src/application/saves/partie.ser", false);
-	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-	         out.writeObject(game);
-	         out.close();
-	         fileOut.close();
-	         System.out.printf("Serialized");
+			FileChooser fc = new FileChooser();
+	        fc.setInitialDirectory(new File(System.getProperty("user.dir")));
+	        FileChooser.ExtensionFilter fef = new FileChooser.ExtensionFilter("Partie de morpion", "*.ser");
+	        fc.getExtensionFilters().add(fef);
+	        fc.setSelectedExtensionFilter(fef);
+	        fc.setInitialFileName("partie.ser");
+	        fc.setTitle("Sauvegarder la partie");
+	        File selectedFile = fc.showSaveDialog(screensmanager.getPersistentStage());
+	        
+	        if(selectedFile != null) {
+	        	FileOutputStream fileOut = new FileOutputStream(selectedFile, false);
+				ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				out.writeObject(game);
+				out.close();
+				fileOut.close();
+	        }
 	      } catch (IOException i) {
 	         i.printStackTrace();
 	      }
-		
 	}
 	
 	public void playAgain(ActionEvent event) {
@@ -407,7 +425,6 @@ public class GameController {
 			        {
 			        	if(game.getFromGrid(j, i)=='X')
 			        	{
-			        		System.out.println("yooo");
 			        		node.getStyleClass().add("cross");
 							node.applyCss();
 			        	}
